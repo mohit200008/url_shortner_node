@@ -14,6 +14,16 @@ async function handlegenerateurl(req, res) {
     return res.status(201).json({ id: shortId , message: "url created" })
 }
 
+async function handleGetAnalytics(req,res) {
+    const shortId = req.params.shortId
+    const result = await URL.findOne({ shortId })
+    return res.json({
+        totalClicks: result.visitHistory.length,
+        analytics: result.visitHistory,
+    })
+}
+
 module.exports = {
-    handlegenerateurl
+    handlegenerateurl,
+    handleGetAnalytics
 }
