@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const urlRoute = require("./routes/url");
 const { connectMongodb } = require("./connection");
@@ -7,7 +8,7 @@ const app = express();
 const PORT = 8002;
 
 connectMongodb(
-  "mongodb+srv://mohit:admin@url.sywvn.mongodb.net/?retryWrites=true&w=majority&appName=url"
+    process.env.MONGO_URL
 )
   .then(() => console.log("Mongodb connected"))
   .catch((err) => console.log(err));
