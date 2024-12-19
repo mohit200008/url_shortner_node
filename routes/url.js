@@ -1,6 +1,7 @@
 const express = require("express")
-const { handlegenerateurl } = require("../controllers/url")
+const { handlegenerateurl, getallUrl } = require("../controllers/url")
 const router = express.Router()
+
 
 router.post('/', handlegenerateurl)
 
